@@ -1,0 +1,43 @@
+<!-- first.component.html -->
+<app-navbar></app-navbar>
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-9">
+      <form class="order-md-10 row g-3 text-center">
+        <div class="col-auto">
+          <label class="visually-hidden">Nom</label>
+          <input [(ngModel)]="student.name" name="name" type="text" class="form-control" placeholder="Nom" />
+        </div>
+        <div class="col-auto">
+          <label class="visually-hidden">Url Image</label>
+          <input [(ngModel)]="student.image" name="image" type="text" class="form-control" placeholder="Url Image" />
+        </div>
+        <div class="col-auto">
+          <label class="visually-hidden">Resultat</label>
+          <input [(ngModel)]="student.resultat" name="resultat" type="text" class="form-control" placeholder="Resultat" />
+        </div>
+        <div class="col-auto">
+          <button (click)="ajout()" type="submit" class="btn btn-outline-primary mb-3">Envoyer</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Liste Student -->
+<div class="container my-5">
+  <div class="row">
+    <div class="col-md-3" *ngFor="let item of students">
+      <div class="card mb-3">
+        <img [src]="item.image" class="card-img-top" alt="...">
+        <div class="card-body bg-white">
+          <h5 class="card-title">{{item.name}}</h5>
+          <h4 [ngStyle]="{'color': item.resultat === 'admie' ? 'green' : 'red'}" class="card-text">{{item.resultat}}</h4>
+          <a href="#" class="btn btn-outline-primary mx-2">Update</a>
+          <a href="#" class="btn btn-outline-danger">Delete</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
